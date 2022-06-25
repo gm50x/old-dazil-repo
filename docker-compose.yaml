@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  skynet:
+    name: dazil-skynet
+    driver: bridge
+
+volumes:
+  dazil-mongodata:
+    name: 'dazil-mongodata'
+
+services:
+  dazil-mongo:
+    image: mongo:5.0.6
+    container_name: dazil-mongo
+    ports: [ "27017:27017" ]
+    volumes: [ 'dazil-mongodata:/data/db' ]
+    networks: [ skynet ]
+  dazil-redis:
+    image: 'redis:alpine'
+    container_name: 'dazil-redis'
+    networks: [ skynet ]
+  dazil-app:
+    build:
+      context: .
+    image: dazil/app
+    container_name: dazil-app
+    ports: [ 30000:3000 ]
+    networks: [ skynet ]
+    depends_on: [ dazil-mongo, dazil-redis ]
+ 
