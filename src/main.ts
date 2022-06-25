@@ -6,6 +6,7 @@ import {
   getAppPort,
   useCompression,
   useCors,
+  useSerializer,
   useValidators,
 } from '@dazil/api-utils';
 
@@ -21,6 +22,7 @@ async function bootstrap() {
   useCompression(app);
   useSwagger(app, swaggerConfig);
   useValidators(app);
+  useSerializer(app);
 
   const port = getAppPort(app);
   await app.listen(port);
