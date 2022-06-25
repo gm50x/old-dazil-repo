@@ -2,7 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Logger } from '@nestjs/common';
 import { useSwagger, SwaggerOptions } from '@dazil/docs';
-import { getAppPort, useCompression, useCors } from '@dazil/api-utils';
+import {
+  getAppPort,
+  useCompression,
+  useCors,
+  useValidators,
+} from '@dazil/api-utils';
 
 const swaggerConfig: SwaggerOptions = {
   title: 'Dazil',
@@ -15,6 +20,7 @@ async function bootstrap() {
   useCors(app);
   useCompression(app);
   useSwagger(app, swaggerConfig);
+  useValidators(app);
 
   const port = getAppPort(app);
   await app.listen(port);
