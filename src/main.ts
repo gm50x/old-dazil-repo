@@ -26,6 +26,6 @@ async function bootstrap() {
 
   const port = getAppPort(app);
   await app.listen(port);
-  Logger.log(`Application is running on port ${port}`, 'Startup');
+  Logger.log(`Application is running on port ${port}`, 'Bootstrap');
 }
 bootstrap();
