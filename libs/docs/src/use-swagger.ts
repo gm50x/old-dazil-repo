@@ -40,5 +40,5 @@ export const useSwagger = (app: INestApplication, opts: SwaggerOptions) => {
   const swaggerDocument = documentBuilder.build();
   const document = SwaggerModule.createDocument(app, swaggerDocument);
   SwaggerModule.setup(swaggerEndpoint, app, document);
-  Logger.log('Open API Docs initialized', SwaggerModule.name);
+  Logger.log('Open API Docs initialized', 'Bootstrap');
 };
