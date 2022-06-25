@@ -16,6 +16,20 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@dazil/docs": [
+        "libs/docs/src"
+      ],
+      "@dazil/docs/*": [
+        "libs/docs/src/*"
+      ],
+      "@dazil/api-utils": [
+        "libs/api-utils/src"
+      ],
+      "@dazil/api-utils/*": [
+        "libs/api-utils/src/*"
+      ]
+    }
   }
 }
