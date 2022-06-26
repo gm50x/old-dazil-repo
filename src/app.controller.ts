@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { User } from './models/user.model';
+import { CreateUserDto, User } from './models/user.model';
 
 @Controller()
 export class AppController {
@@ -9,6 +9,22 @@ export class AppController {
   @Get()
   getHello(): string {
     return this.appService.getHello();
+  }
+
+  @Post('users')
+  async create(@Body() dto: CreateUserDto): Promise<User> {
+    return this.appService.create(dto);
+  }
+
+  @Get('users')
+  async getMany(): Promise<Array<User>> {
+    const users = await this.appService.getMany();
+    return users;
+  }
+
+  @Get('users/:id')
+  async getOne(@Param('id') id: string) {
+    return this.appService.getOne();
   }
 
   @Get('user')
