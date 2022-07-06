@@ -1,4 +1,4 @@
-import { INestApplication, Logger } from '@nestjs/common';
+import { INestApplication } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 export type BearerAuthType = 'http' | 'apiKey' | 'oauth2' | 'openIdConnect';
@@ -40,5 +40,4 @@ export const useSwagger = (app: INestApplication, opts: SwaggerOptions) => {
   const swaggerDocument = documentBuilder.build();
   const document = SwaggerModule.createDocument(app, swaggerDocument);
   SwaggerModule.setup(swaggerEndpoint, app, document);
-  Logger.log('Open API Docs initialized', 'Bootstrap');
 };

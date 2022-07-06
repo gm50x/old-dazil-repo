@@ -1,8 +1,4 @@
-import {
-  ClassSerializerInterceptor,
-  INestApplication,
-  Logger,
-} from '@nestjs/common';
+import { ClassSerializerInterceptor, INestApplication } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 export const useSerializer = (app: INestApplication) => {
   const reflector = app.get(Reflector);
@@ -11,6 +7,5 @@ export const useSerializer = (app: INestApplication) => {
       excludePrefixes: ['_'],
     }),
   );
-  Logger.log('Serialization initialized', 'Bootstrap');
   return app;
 };
